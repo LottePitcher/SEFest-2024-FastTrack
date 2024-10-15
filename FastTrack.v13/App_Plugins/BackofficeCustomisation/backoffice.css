@@ -8,6 +8,9 @@ div.date-picker-with-status div.date-picker-status {
     left: 250px;
     padding: 5px 10px 3px 10px;
 }
+div.date-picker-with-status div.date-picker-status:empty {
+    display:none;
+}
 
 div.date-picker-with-status div.date-picker-status[data-date-status='EXPIRED'] {
     color: #C60000;

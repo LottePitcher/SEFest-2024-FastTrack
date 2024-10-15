@@ -13,6 +13,28 @@
       "group": "Custom",
       "editor": {
         "view": "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.html"
+      },
+      "prevalues": {
+        "fields": [
+          {
+            "label": "Active label",
+            "description": "Wording to display when the date is today or in the future",
+            "key": "activeLabel",
+            "view": "textstring"
+          },
+          {
+              "label": "Expired label",
+              "description": "Wording to display when the date is in the past",
+              "key": "expiredLabel",
+              "view": "textstring"
+          },
+          {
+            "label": "Empty label",
+            "description": "Wording to display when no date is set",
+            "key": "emptyLabel",
+            "view": "textstring"
+          }
+        ]
       }
     }
   ]

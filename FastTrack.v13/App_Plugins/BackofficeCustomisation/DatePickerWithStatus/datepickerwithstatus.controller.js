@@ -25,13 +25,16 @@
                 var dateObj = new Date(vm.dateValue);
                 if (dateObj > (new Date())) {
                     vm.dateStatus = "ACTIVE";
+                    vm.dateStatusLabel = $scope.model.config.activeLabel;
                 }
                 else {
                     vm.dateStatus = "EXPIRED";
+                    vm.dateStatusLabel = $scope.model.config.expiredLabel;
                 }
             }
             else {
                 vm.dateStatus = "UNSUBSCRIBED";
+                vm.dateStatusLabel = $scope.model.config.emptyLabel;
             }
         }
 
