@@ -1,0 +1,28 @@
+div.date-picker-with-status {
+    position: relative;
+}
+
+div.date-picker-with-status div.date-picker-status {
+    position: absolute;
+    top: 0;
+    left: 250px;
+    padding: 5px 10px 3px 10px;
+}
+
+div.date-picker-with-status div.date-picker-status[data-date-status='EXPIRED'] {
+    color: #C60000;
+    background-color: #FFB3B3;
+    border: solid 1px #C60000;
+}
+
+div.date-picker-with-status div.date-picker-status[data-date-status='ACTIVE'] {
+    color: #077E07;
+    background-color: #C9FFC9;
+    border: solid 1px #077E07;
+}
+
+div.date-picker-with-status div.date-picker-status[data-date-status='UNSUBSCRIBED'] {
+    color: #C65A00;
+    background-color: #FFF;
+    border: solid 1px #C65A00;
+}

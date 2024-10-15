@@ -1,0 +1,19 @@
+{
+  "css": [
+    "~/App_Plugins/BackofficeCustomisation/backoffice.css"
+  ],
+  "javascript": [
+    "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.controller.js"
+  ],
+  "propertyEditors": [
+    {
+      "alias": "Custom.DatePickerWithStatus",
+      "name": "Date Picker with Status",
+      "icon": "icon-calendar",
+      "group": "Custom",
+      "editor": {
+        "view": "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.html"
+      }
+    }
+  ]
+}
