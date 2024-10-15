@@ -3,14 +3,18 @@
     function datePickerWithStatusController($scope) {
 
         var vm = this;
+        vm.dateDbValue = null;
         vm.dateValue = "";
         vm.dateStatus = "";
+        vm.addMonths = addMonthsToDate;
+        vm.resetDate = resetDate;
 
         if ($scope.model.value) {
             console.log("scope.model.value: " + $scope.model.value);
             var convertedDate = convertUmbracoDateForDatePicker($scope.model.value);
             console.log("convertedDate: " + convertedDate);
             vm.dateValue = convertedDate;
+            vm.dateDbValue = convertedDate; // store value in db so can be reset
         }
 
         setStatusForDate();
@@ -56,6 +60,24 @@
             return new Date(dateYYYY + "-" + dateMM + "-" + dateDD + "T00:00:00Z");
         }
 
+        function addMonthsToDate(months) {
+            if (!vm.dateValue) {
+                vm.dateValue = new Date();
+            }
+            var copyDate = new Date(vm.dateValue);
+            if (copyDate < new Date()) {
+                // date has expired, so reset to today
+                copyDate = new Date();
+            }
+            copyDate.setMonth(vm.dateValue.getMonth() + months);
+            console.log("date after adding " + months + "m: " + copyDate);
+            vm.dateValue = copyDate;
+        }
+        
+        function resetDate() {
+            vm.dateValue = vm.dateDbValue;
+        }
+        
         $scope.$watch('vm.dateValue', function (newval, oldval) {
             setStatusForDate();
         });

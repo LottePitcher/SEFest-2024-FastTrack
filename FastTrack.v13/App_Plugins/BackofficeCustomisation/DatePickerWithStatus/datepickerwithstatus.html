@@ -4,4 +4,22 @@
 
     <div class="date-picker-status" data-date-status="{{vm.dateStatus}}">{{vm.dateStatusLabel}}</div>
 
+    <div class="date-picker-buttons">
+        <umb-button type="button"
+                    button-style="success"
+                    action="vm.addMonths(6)"
+                    label="Add 6 Months">
+        </umb-button>
+        <umb-button type="button"
+                    button-style="success"
+                    action="vm.addMonths(12)"
+                    label="Add 12 Months">
+        </umb-button>
+        <umb-button type="button"
+                    button-style="info"
+                    action="vm.resetDate()"
+                    label="Reset">
+        </umb-button>
+    </div>
+    
 </div>

@@ -5,7 +5,7 @@ div.date-picker-with-status {
 div.date-picker-with-status div.date-picker-status {
     position: absolute;
     top: 0;
-    left: 250px;
+    left: 225px;
     padding: 5px 10px 3px 10px;
 }
 div.date-picker-with-status div.date-picker-status:empty {
@@ -28,4 +28,8 @@ div.date-picker-with-status div.date-picker-status[data-date-status='UNSUBSCRIBE
     color: #C65A00;
     background-color: #FFF;
     border: solid 1px #C65A00;
+}
+
+div.date-picker-with-status div.date-picker-buttons {
+    padding-top: 25px;
 }
