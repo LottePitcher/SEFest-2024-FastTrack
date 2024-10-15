@@ -33,6 +33,12 @@
             "description": "Wording to display when no date is set",
             "key": "emptyLabel",
             "view": "textstring"
+          },
+          {
+              "label": "Show 'Add Months' buttons?",
+              "description": "Enter the months to show 'Add Months' buttons for, separated by commas (e.g. 6,12)",
+              "key": "addMonthsButtons",
+              "view": "textstring"
           }
         ]
       }

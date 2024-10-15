@@ -4,17 +4,14 @@
 
     <div class="date-picker-status" data-date-status="{{vm.dateStatus}}">{{vm.dateStatusLabel}}</div>
 
-    <div class="date-picker-buttons">
-        <umb-button type="button"
-                    button-style="success"
-                    action="vm.addMonths(6)"
-                    label="Add 6 Months">
-        </umb-button>
-        <umb-button type="button"
-                    button-style="success"
-                    action="vm.addMonths(12)"
-                    label="Add 12 Months">
-        </umb-button>
+    <div class="date-picker-buttons" ng-if="vm.showButtons">
+        <span ng-repeat="addButton in vm.addMonthsButtons">
+            <umb-button type="button"
+                        button-style="success"
+                        action="vm.addMonthsToDate(addButton)"
+                        label="{{'Add ' + addButton + ' months'}}">
+            </umb-button>
+        </span>
         <umb-button type="button"
                     button-style="info"
                     action="vm.resetDate()"

@@ -3,10 +3,15 @@
     function datePickerWithStatusController($scope) {
 
         var vm = this;
-        vm.dateDbValue = null;
+        
         vm.dateValue = "";
+        vm.dateDbValue = null;
         vm.dateStatus = "";
-        vm.addMonths = addMonthsToDate;
+        
+        vm.showButtons = false;
+        vm.addMonthsButtons = [];
+        
+        vm.addMonthsToDate = addMonthsToDate;
         vm.resetDate = resetDate;
 
         if ($scope.model.value) {
@@ -15,6 +20,11 @@
             console.log("convertedDate: " + convertedDate);
             vm.dateValue = convertedDate;
             vm.dateDbValue = convertedDate; // store value in db so can be reset
+        }
+        
+        if ($scope.model.config.addMonthsButtons) {
+            vm.showButtons = true;
+            vm.addMonthsButtons = $scope.model.config.addMonthsButtons.split(",");
         }
 
         setStatusForDate();
@@ -61,6 +71,7 @@
         }
 
         function addMonthsToDate(months) {
+            var monthsToAdd = parseInt(months);
             if (!vm.dateValue) {
                 vm.dateValue = new Date();
             }
@@ -69,7 +80,7 @@
                 // date has expired, so reset to today
                 copyDate = new Date();
             }
-            copyDate.setMonth(vm.dateValue.getMonth() + months);
+            copyDate.setMonth(vm.dateValue.getMonth() + monthsToAdd);
             console.log("date after adding " + months + "m: " + copyDate);
             vm.dateValue = copyDate;
         }
