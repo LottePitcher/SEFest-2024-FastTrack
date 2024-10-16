@@ -17,6 +17,16 @@ Settings > uSync > Everything : click the Import button. This should:
 - Update the Member type with the custom properties
 - Add 15 members with varying subscription expiry dates
 
+### v14 Site
+
+After you have run the v13 site and done the uSync import, you can then set up the v14 site:
+- Copy the `Fastrack.v13\umbraco\data\Umbraco.sqlite.db` into that location in the v14 site (make sure you have stopped the v13 site running first!)
+- Run the 'FastTrack.v14' site: the upgrade to v14 should happen automatically and should be able to log in as you did in the v13 site.
+
+### v15 Site
+
+Can be set up in the same way as the v14 site.
+
 ## Custom Functionality
 
 ### Custom Property Editor: Date Picker With Status

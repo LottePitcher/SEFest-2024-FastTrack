@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTrack.v13", "FastTrack.v13\FastTrack.v13.csproj", "{42573CA7-3087-4A3A-A768-0B2E1991F45F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTrack.v14", "FastTrack.v14\FastTrack.v14.csproj", "{5F1B4199-D5F6-4EE7-9B7C-0919D6E64BA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastTrack.v15", "FastTrack.v15\FastTrack.v15.csproj", "{87C590A5-A757-4697-896A-C4DC2E151082}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{42573CA7-3087-4A3A-A768-0B2E1991F45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42573CA7-3087-4A3A-A768-0B2E1991F45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42573CA7-3087-4A3A-A768-0B2E1991F45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F1B4199-D5F6-4EE7-9B7C-0919D6E64BA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F1B4199-D5F6-4EE7-9B7C-0919D6E64BA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F1B4199-D5F6-4EE7-9B7C-0919D6E64BA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F1B4199-D5F6-4EE7-9B7C-0919D6E64BA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{87C590A5-A757-4697-896A-C4DC2E151082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{87C590A5-A757-4697-896A-C4DC2E151082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{87C590A5-A757-4697-896A-C4DC2E151082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{87C590A5-A757-4697-896A-C4DC2E151082}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
