@@ -63,6 +63,8 @@
             var dateMM = arrDateParts[1];
             var dateYYYY = arrDateParts[2];
 
+            if (!dateDD || !dateMM || !dateYYYY) return null;
+
             if (dateDD.length === 1) dateDD = "0" + dateDD;
             if (dateMM.length === 1) dateMM = "0" + dateMM;
             if (dateYYYY.length === 2) dateYYYY = "20" + dateYYYY;
