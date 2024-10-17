@@ -42,7 +42,7 @@ g = function(t) {
   const e = parseInt(t);
   if (!this.value || !e) return;
   const a = new Date(this.value);
-  a.setMonth(a.getMonth() + e), this.value = a.toLocaleDateString(), console.log(this.value), this.dispatchEvent(new c());
+  a.setMonth(a.getMonth() + e), this.value = a.toLocaleDateString(), this.dispatchEvent(new c());
 };
 m = function() {
   var e, a;
