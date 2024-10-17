@@ -63,7 +63,6 @@ export class FastTrackPropertyEditor
     const valueAsDate = new Date(this.value);
     valueAsDate.setMonth(valueAsDate.getMonth() + monthsAsInt);
     this.value = valueAsDate.toLocaleDateString();
-    console.log(this.value);
     this.dispatchEvent(new UmbChangeEvent());
   }
 
