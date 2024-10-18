@@ -4,7 +4,8 @@
   ],
   "javascript": [
     "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.controller.js",
-    "~/App_Plugins/BackofficeCustomisation/SubscriptionsDashboard/subscriptionsdashboard.controller.js"
+    "~/App_Plugins/BackofficeCustomisation/Subscriptions/subscriptionsdashboard.controller.js",
+    "~/App_Plugins/BackofficeCustomisation/Subscriptions/subscriptions.resource.js"
   ],
   "propertyEditors": [
     {
@@ -54,7 +55,7 @@
   "dashboards":  [
     {
       "alias": "subscriptionsDashboard",
-      "view":  "/App_Plugins/BackofficeCustomisation/SubscriptionsDashboard/subscriptionsdashboard.html",
+      "view":  "/App_Plugins/BackofficeCustomisation/Subscriptions/subscriptionsdashboard.html",
       "sections":  [ "subscriptions" ]
     }
   ]

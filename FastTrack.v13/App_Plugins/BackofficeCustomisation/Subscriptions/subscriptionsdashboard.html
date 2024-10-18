@@ -1,0 +1,39 @@
+<div ng-controller="Custom.SubscriptionsDashboardController as vm">
+
+    <h1>Subscribers Dashboard</h1>
+    
+    <p>
+        <umb-button type="button"
+                    action="vm.getAll()"
+                    label="List All Subscribers">
+        </umb-button>
+    </p>
+
+    <umb-load-indicator ng-show="vm.loading"></umb-load-indicator>
+
+    <div ng-show="!vm.loading && vm.action=='ALL'">
+        
+        <h2>All Subscribers</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Subscription Expires</th>
+            </tr>
+            </thead>
+            <tbody>
+                    <tr ng-repeat="item in vm.list">
+                        <td>{{item.FirstName}}</td>
+                        <td>{{item.LastName}}</td>
+                        <td>{{item.Email}}</td>
+                        <td>{{item.SubscriptionExpiry}}</td>
+                        <td><a href="{{'/umbraco/#/member/member/edit/' + item.MemberKey}}" target="_blank">View/Edit</a></td>
+                    </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
