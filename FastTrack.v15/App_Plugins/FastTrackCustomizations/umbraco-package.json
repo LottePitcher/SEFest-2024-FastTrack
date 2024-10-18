@@ -1,0 +1,78 @@
+{
+    "$schema": "../../umbraco-package-schema.json",
+    "name": "Fast Track Customizations",
+    "version": "1.0.0",
+    "extensions": [
+        {
+            "type": "propertyEditorUi",
+            "alias": "Custom.DatePickerWithStatus",
+            "name": "Fast Track - Property Editor - Member Expire",
+            "element": "/App_Plugins/FastTrackCustomizations/property-editor-ui.js",
+            "meta": {
+                "label": "Member expiration date",
+                "propertyEditorSchemaAlias": "Umbraco.DateTime",
+                "icon": "icon-time",
+                "group": "pickers",
+                "settings": {
+                    "properties": [
+                        {
+                            "label": "Active label",
+                            "description": "Wording to display when the date is today or in the future",
+                            "alias": "activeLabel",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextBox"
+                        },
+                        {
+                            "label": "Expired label",
+                            "description": "Wording to display when the date is in the past",
+                            "alias": "expiredLabel",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextBox"
+                        },
+                        {
+                            "label": "Empty label",
+                            "description": "Wording to display when no date is set",
+                            "alias": "emptyLabel",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextBox"
+                        },
+                        {
+                            "label": "Show 'Add Months' buttons?",
+                            "description": "Enter the months to show 'Add Months' buttons for, separated by commas (e.g. 6,12)",
+                            "alias": "addMonthsButtons",
+                            "propertyEditorUiAlias": "Umb.PropertyEditorUi.TextBox"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "type": "section",
+            "alias": "Custom.Section.Subscriptions",
+            "name": "Fast Track - Section - Subscriptions",
+            "meta": {
+                "label": "Subscriptions",
+                "pathname": "custom-subscriptions"
+            }
+        },
+        {
+            "type": "dashboard",
+            "alias": "Custom.Dashboard.Subscriptions",
+            "name": "Fast Track - Dashboard - Subscriptions",
+            "element": "/App_Plugins/FastTrackCustomizations/dashboard.js",
+            "meta": {
+                "label": "Subscriptions",
+                "pathname": "custom-subscriptions"
+            },
+            "conditions": [
+                {
+                    "alias": "Umb.Condition.SectionAlias",
+                    "match": "Custom.Section.Subscriptions"
+                }
+            ]
+        },
+        {
+            "type": "modal",
+            "alias": "Custom.Modal.Member",
+            "name": "Fast Track - Modal - Member",
+            "element": "/App_Plugins/FastTrackCustomizations/member-modal.js"
+        }
+    ]
+}
