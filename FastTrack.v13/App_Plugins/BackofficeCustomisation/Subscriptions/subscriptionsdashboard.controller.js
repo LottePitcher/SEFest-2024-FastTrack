@@ -1,20 +1,38 @@
-function subscriptionsDashboardController(subscriptionsResource) {
+function subscriptionsDashboardController($http, umbRequestHelper) {
 
     var vm = this;
+    const controllerBaseUrl = "backoffice/Subscriptions/ListingApi";
     
     vm.loading = false;
-    vm.action = "";
-    vm.list = [];
+    vm.listHeading = "";
+    vm.list = null;
     
-    vm.getAll = getAll;
+    vm.getActive = getActive;
+    vm.getExpired = getExpired;
+    vm.getNonsubscribed = getNonsubscribed;
     
-    function getAll() {
+    function getActive() {
+        getSubscribers("Active Subscribers", "GetActive");
+    }
+    
+    function getExpired() {
+        getSubscribers("Expired Subscribers", "GetExpired");
+    }
+    
+    function getNonsubscribed() {
+        getSubscribers("Non Subscribers", "GetNonsubscribed");
+    }
+
+    function getSubscribers(listHeading, controllerMethod) {
         vm.loading = true;
-        vm.action = "ALL";
-        subscriptionsResource.getAll().then(function(response) {
-            vm.list = response;
-            vm.loading = false;
-        });
+        umbRequestHelper.resourcePromise(
+            $http.get(controllerBaseUrl + "/" + controllerMethod),
+            "Failed to retrieve member items.")
+            .then(result => {
+                vm.listHeading = listHeading;
+                vm.list = result;
+                vm.loading = false;
+            });
     }
 }
 

@@ -4,16 +4,24 @@
     
     <p>
         <umb-button type="button"
-                    action="vm.getAll()"
-                    label="List All Subscribers">
+                    action="vm.getActive()"
+                    label="List Active Subscribers">
+        </umb-button>
+        <umb-button type="button"
+                    action="vm.getExpired()"
+                    label="List Expired Subscribers">
+        </umb-button>
+        <umb-button type="button"
+                    action="vm.getNonsubscribed()"
+                    label="List Non Subscribers">
         </umb-button>
     </p>
 
     <umb-load-indicator ng-show="vm.loading"></umb-load-indicator>
 
-    <div ng-show="!vm.loading && vm.action=='ALL'">
+    <div ng-show="!vm.loading && vm.list">
         
-        <h2>All Subscribers</h2>
+        <h2>{{vm.listHeading}}</h2>
 
         <table>
             <thead>
