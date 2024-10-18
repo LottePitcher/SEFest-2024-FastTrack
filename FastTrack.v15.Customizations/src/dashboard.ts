@@ -7,7 +7,7 @@ import {
   repeat,
   state,
 } from "@umbraco-cms/backoffice/external/lit";
-import type { UmbDashboardElement } from "@umbraco-cms/backoffice/extension-registry";
+import type { UmbDashboardElement } from "@umbraco-cms/backoffice/dashboard";
 import { UMB_MODAL_MANAGER_CONTEXT } from "@umbraco-cms/backoffice/modal";
 import { UmbMemberCollectionRepository } from "@umbraco-cms/backoffice/member";
 
