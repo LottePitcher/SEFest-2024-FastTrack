@@ -13,7 +13,8 @@
       "icon": "icon-calendar",
       "group": "Custom",
       "editor": {
-        "view": "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.html"
+        "view": "~/App_Plugins/BackofficeCustomisation/DatePickerWithStatus/datepickerwithstatus.html",
+        "valueType": "DATETIME"
       },
       "prevalues": {
         "fields": [

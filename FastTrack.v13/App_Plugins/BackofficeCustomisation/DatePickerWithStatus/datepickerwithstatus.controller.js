@@ -15,11 +15,9 @@
         vm.resetDate = resetDate;
 
         if ($scope.model.value) {
-            console.log("scope.model.value: " + $scope.model.value);
-            var convertedDate = convertUmbracoDateForDatePicker($scope.model.value);
-            console.log("convertedDate: " + convertedDate);
+            var convertedDate = new Date($scope.model.value);
             vm.dateValue = convertedDate;
-            vm.dateDbValue = convertedDate; // store value in db so can be reset
+            vm.dateDbValue = convertedDate; // remember value on load for Reset button
         }
         
         if ($scope.model.config.addMonthsButtons) {
@@ -52,39 +50,19 @@
             }
         }
 
-        function convertUmbracoDateForDatePicker(dateFromUmbraco) {
-
-            // ALL BACKOFFICE USERS ARE ENGLISH UK (NOT US) SO THIS APPROACH IS SAFE!
-
-            if (!dateFromUmbraco) return null;
-
-            var arrDateParts = dateFromUmbraco.split(" ")[0].split("/");
-            var dateDD = arrDateParts[0];
-            var dateMM = arrDateParts[1];
-            var dateYYYY = arrDateParts[2];
-
-            if (!dateDD || !dateMM || !dateYYYY) return null;
-
-            if (dateDD.length === 1) dateDD = "0" + dateDD;
-            if (dateMM.length === 1) dateMM = "0" + dateMM;
-            if (dateYYYY.length === 2) dateYYYY = "20" + dateYYYY;
-
-            return new Date(dateYYYY + "-" + dateMM + "-" + dateDD + "T00:00:00Z");
-        }
-
         function addMonthsToDate(months) {
-            var monthsToAdd = parseInt(months);
-            if (!vm.dateValue) {
-                vm.dateValue = new Date();
+            
+            // if date is empty or expired, then use today's date
+            var date = (vm.dateValue) ? new Date(vm.dateValue) : new Date();
+            if (date < new Date()) date = new Date();
+
+            var d = date.getDate();
+            date.setMonth(date.getMonth() + parseInt(months));
+            if (date.getDate() != d) {
+                date.setDate(0);
             }
-            var copyDate = new Date(vm.dateValue);
-            if (copyDate < new Date()) {
-                // date has expired, so reset to today
-                copyDate = new Date();
-            }
-            copyDate.setMonth(vm.dateValue.getMonth() + monthsToAdd);
-            console.log("date after adding " + months + "m: " + copyDate);
-            vm.dateValue = copyDate;
+
+            vm.dateValue = date;    
         }
         
         function resetDate() {
