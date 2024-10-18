@@ -1,39 +1,31 @@
-import { customElement as b, html as d } from "@umbraco-cms/backoffice/external/lit";
-import { UmbModalBaseElement as p } from "@umbraco-cms/backoffice/modal";
-var c = Object.defineProperty, f = Object.getOwnPropertyDescriptor, y = (s, t, l, i) => {
-  for (var e = i > 1 ? void 0 : i ? f(t, l) : t, n = s.length - 1, r; n >= 0; n--)
-    (r = s[n]) && (e = (i ? r(t, l, e) : r(e)) || e);
-  return i && e && c(t, l, e), e;
+import { customElement as o, html as b } from "@umbraco-cms/backoffice/external/lit";
+import { UmbModalBaseElement as l } from "@umbraco-cms/backoffice/modal";
+var d = Object.defineProperty, p = Object.getOwnPropertyDescriptor, v = (e, t, r, s) => {
+  for (var a = s > 1 ? void 0 : s ? p(t, r) : t, i = e.length - 1, m; i >= 0; i--)
+    (m = e[i]) && (a = (s ? m(t, r, a) : m(a)) || a);
+  return s && a && d(t, r, a), a;
 };
-let u = class extends p {
+let n = class extends l {
   render() {
-    var n, r, m, o, v;
-    const s = (n = this.data) == null ? void 0 : n.member, t = (r = s.values.find(
-      (a) => a.alias === "firstName"
-    )) == null ? void 0 : r.value, l = (m = s.values.find(
-      (a) => a.alias === "lastName"
-    )) == null ? void 0 : m.value, i = (o = s.values.find(
-      (a) => a.alias === "subscriptionExpiry"
-    )) == null ? void 0 : o.value, e = (v = s.values.find(
-      (a) => a.alias === "comments"
-    )) == null ? void 0 : v.value;
-    return d`<umb-body-layout>
-      <div slot="header">${s.name}</div>
+    var t;
+    const e = (t = this.data) == null ? void 0 : t.member;
+    return b`<umb-body-layout>
+      <div slot="header">${e.name}</div>
       <div>
         <b>First name:</b>
-        <span>${t}</span>
+        <span>${e.firstName}</span>
       </div>
       <div>
         <b>Last name:</b>
-        <span>${l}</span>
+        <span>${e.lastName}</span>
+      </div>
+      <div>
+        <b>Email:</b>
+        <span>${e.email}</span>
       </div>
       <div>
         <b>Subscription expiry:</b>
-        <span>${i}</span>
-      </div>
-      <div>
-        <b>Comments:</b>
-        <span>${e}</span>
+        <span>${e.subscriptionExpiry}</span>
       </div>
       <div slot="actions">
         <uui-button @click=${() => this._rejectModal()}>Close</uui-button>
@@ -41,10 +33,10 @@ let u = class extends p {
     </umb-body-layout>`;
   }
 };
-u = y([
-  b("fast-track-member-modal")
-], u);
+n = v([
+  o("fast-track-member-modal")
+], n);
 export {
-  u as FastTrackMemberModal,
-  u as element
+  n as FastTrackMemberModal,
+  n as element
 };

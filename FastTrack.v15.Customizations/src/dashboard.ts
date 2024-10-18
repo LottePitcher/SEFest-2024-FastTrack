@@ -9,7 +9,8 @@ import {
 } from "@umbraco-cms/backoffice/external/lit";
 import type { UmbDashboardElement } from "@umbraco-cms/backoffice/dashboard";
 import { UMB_MODAL_MANAGER_CONTEXT } from "@umbraco-cms/backoffice/modal";
-import { UmbMemberCollectionRepository } from "@umbraco-cms/backoffice/member";
+import { tryExecuteAndNotify } from "@umbraco-cms/backoffice/resources";
+import { SubscriptionsApiService, type SubscriptionListItem } from "./api";
 
 @customElement("fast-track-dashboard")
 export class FastTrackDashboard
@@ -17,10 +18,10 @@ export class FastTrackDashboard
   implements UmbDashboardElement
 {
   @state()
-  activeMembers?: Array<any>;
+  activeMembers?: Array<SubscriptionListItem>;
 
   @state()
-  expiredMembers?: Array<any>;
+  expiredMembers?: Array<SubscriptionListItem>;
 
   constructor() {
     super();
@@ -30,15 +31,19 @@ export class FastTrackDashboard
   }
 
   async #requestActiveMembers() {
-    const repository = new UmbMemberCollectionRepository(this);
-    const { data } = await repository.requestCollection({ skip: 0, take: 100 });
-    this.activeMembers = data?.items;
+    const { data } = await tryExecuteAndNotify(
+      this,
+      SubscriptionsApiService.getUmbracoSubscriptionsApiV1GetActive()
+    );
+    this.activeMembers = data;
   }
 
   async #requestExpiredMembers() {
-    const repository = new UmbMemberCollectionRepository(this);
-    const { data } = await repository.requestCollection({ skip: 0, take: 100 });
-    this.expiredMembers = data?.items;
+    const { data } = await tryExecuteAndNotify(
+      this,
+      SubscriptionsApiService.getUmbracoSubscriptionsApiV1GetExpired()
+    );
+    this.expiredMembers = data;
   }
 
   async #onOpenMember(member: any) {
@@ -61,10 +66,10 @@ export class FastTrackDashboard
     return html`<uui-box headline="Active Members">
       ${repeat(
         this.activeMembers,
-        (member) => member.unique,
+        (member) => member.memberKey,
         (member) =>
           html`<uui-ref-node-member
-            name=${member.variants[0].name}
+            name="${member.firstName} ${member.lastName}"
             @open=${() => this.#onOpenMember(member)}
           ></uui-ref-node-member>`
       )}</uui-box
@@ -76,10 +81,10 @@ export class FastTrackDashboard
     return html`<uui-box headline="Expired Members">
       ${repeat(
         this.expiredMembers,
-        (member) => member.unique,
+        (member) => member.memberKey,
         (member) =>
           html`<uui-ref-node-member
-            name=${member.variants[0].name}
+            name="${member.firstName} ${member.lastName}"
             @open=${() => this.#onOpenMember(member)}
           ></uui-ref-node-member>`
       )}</uui-box

@@ -6,36 +6,24 @@ export class FastTrackMemberModal extends UmbModalBaseElement<any> {
   render() {
     // Get the member from the data:
     const member = this.data?.member;
-    const firstName = member.values.find(
-      (x: any) => x.alias === "firstName"
-    )?.value;
-    const lastName = member.values.find(
-      (x: any) => x.alias === "lastName"
-    )?.value;
-    const subscriptionExpiry = member.values.find(
-      (x: any) => x.alias === "subscriptionExpiry"
-    )?.value;
-    const comments = member.values.find(
-      (x: any) => x.alias === "comments"
-    )?.value;
 
     return html`<umb-body-layout>
       <div slot="header">${member.name}</div>
       <div>
         <b>First name:</b>
-        <span>${firstName}</span>
+        <span>${member.firstName}</span>
       </div>
       <div>
         <b>Last name:</b>
-        <span>${lastName}</span>
+        <span>${member.lastName}</span>
+      </div>
+      <div>
+        <b>Email:</b>
+        <span>${member.email}</span>
       </div>
       <div>
         <b>Subscription expiry:</b>
-        <span>${subscriptionExpiry}</span>
-      </div>
-      <div>
-        <b>Comments:</b>
-        <span>${comments}</span>
+        <span>${member.subscriptionExpiry}</span>
       </div>
       <div slot="actions">
         <uui-button @click=${() => this._rejectModal()}>Close</uui-button>

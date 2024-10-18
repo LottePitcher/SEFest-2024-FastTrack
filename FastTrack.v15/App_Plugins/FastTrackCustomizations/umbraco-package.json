@@ -4,6 +4,12 @@
     "version": "1.0.0",
     "extensions": [
         {
+            "type": "section",
+            "alias": "Custom.EntryPoint.SubscriptionsApi",
+            "name": "Fast Track - Entry Point - API Setup",
+            "js": "/App_Plugins/FastTrackCustomizations/api-setup.js"
+        },
+        {
             "type": "propertyEditorUi",
             "alias": "Custom.DatePickerWithStatus",
             "name": "Fast Track - Property Editor - Member Expire",
