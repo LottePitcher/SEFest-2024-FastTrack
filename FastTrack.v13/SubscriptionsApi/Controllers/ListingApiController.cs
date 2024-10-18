@@ -1,13 +1,14 @@
+using FastTrack.v13.SubscriptionsApi.Models;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.BackOffice.Controllers;
 using Umbraco.Cms.Web.Common.Attributes;
 
-namespace FastTrack.v13.SubscriptionsApi;
+namespace FastTrack.v13.SubscriptionsApi.Controllers;
 
 [PluginController("Subscriptions")]
 public class ListingApiController : UmbracoAuthorizedJsonController
 {
-    private IMemberService _memberService;
+    private readonly IMemberService _memberService;
 
     public ListingApiController(IMemberService memberService)
     {
