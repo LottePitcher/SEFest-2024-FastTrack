@@ -18,7 +18,7 @@ let r = class extends y(b) {
   render() {
     return p`
 			<div>
-				<uui-input type="date" .value=${this.value ?? ""} @change=${o(this, n, _)}></uui-input>
+				<uui-input type="date" .value=${(this.value ?? "").split(" ")[0]} @change=${o(this, n, _)}></uui-input>
 
 				<span class="date-picker-status">${this._statusLabel}</span>
 			</div>

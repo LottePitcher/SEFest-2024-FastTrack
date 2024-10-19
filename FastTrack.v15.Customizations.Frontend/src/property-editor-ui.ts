@@ -63,7 +63,7 @@ export class FastTrackPropertyEditor extends UmbElementMixin(LitElement) impleme
 	render() {
 		return html`
 			<div>
-				<uui-input type="date" .value=${this.value ?? ''} @change=${this.#onChange}></uui-input>
+				<uui-input type="date" .value=${(this.value ?? '').split(' ')[0]} @change=${this.#onChange}></uui-input>
 
 				<span class="date-picker-status">${this._statusLabel}</span>
 			</div>
