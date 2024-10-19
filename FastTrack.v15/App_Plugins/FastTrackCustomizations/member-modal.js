@@ -10,27 +10,27 @@ let n = class extends l {
     var t;
     const e = (t = this.data) == null ? void 0 : t.member;
     return b`<umb-body-layout>
-      <div slot="header">${e.name}</div>
-      <div>
-        <b>First name:</b>
-        <span>${e.firstName}</span>
-      </div>
-      <div>
-        <b>Last name:</b>
-        <span>${e.lastName}</span>
-      </div>
-      <div>
-        <b>Email:</b>
-        <span>${e.email}</span>
-      </div>
-      <div>
-        <b>Subscription expiry:</b>
-        <span>${e.subscriptionExpiry}</span>
-      </div>
-      <div slot="actions">
-        <uui-button @click=${() => this._rejectModal()}>Close</uui-button>
-      </div>
-    </umb-body-layout>`;
+			<div slot="header">${e.name}</div>
+			<div>
+				<b>First name:</b>
+				<span>${e.firstName}</span>
+			</div>
+			<div>
+				<b>Last name:</b>
+				<span>${e.lastName}</span>
+			</div>
+			<div>
+				<b>Email:</b>
+				<span>${e.email}</span>
+			</div>
+			<div>
+				<b>Subscription expiry:</b>
+				<span>${e.subscriptionExpiry}</span>
+			</div>
+			<div slot="actions">
+				<uui-button @click=${() => this._rejectModal()}>Close</uui-button>
+			</div>
+		</umb-body-layout>`;
   }
 };
 n = v([

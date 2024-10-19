@@ -283,24 +283,16 @@ let f = class extends G(H) {
     super(), ie(this, l), u(this, l, O).call(this), u(this, l, q).call(this);
   }
   render() {
-    return h`
-      ${u(this, l, D).call(this)} ${u(this, l, $).call(this)}
-    `;
+    return h` ${u(this, l, D).call(this)} ${u(this, l, $).call(this)} `;
   }
 };
 l = /* @__PURE__ */ new WeakSet();
 O = async function() {
-  const { data: t } = await x(
-    this,
-    M.getUmbracoSubscriptionsApiV1GetActive()
-  );
+  const { data: t } = await x(this, M.getUmbracoSubscriptionsApiV1GetActive());
   this.activeMembers = t;
 };
 q = async function() {
-  const { data: t } = await x(
-    this,
-    M.getUmbracoSubscriptionsApiV1GetExpired()
-  );
+  const { data: t } = await x(this, M.getUmbracoSubscriptionsApiV1GetExpired());
   this.expiredMembers = t;
 };
 E = async function(t) {
@@ -313,37 +305,35 @@ E = async function(t) {
 D = function() {
   if (this.activeMembers)
     return h`<uui-box headline="Active Members">
-      ${C(
+			${C(
       this.activeMembers,
       (t) => t.memberKey,
       (t) => h`<uui-ref-node-member
-            name="${t.firstName} ${t.lastName}"
-            @open=${() => u(this, l, E).call(this, t)}
-          ></uui-ref-node-member>`
+						name="${t.firstName} ${t.lastName}"
+						@open=${() => u(this, l, E).call(this, t)}></uui-ref-node-member>`
     )}</uui-box
-    >`;
+		>`;
 };
 $ = function() {
   if (this.expiredMembers)
     return h`<uui-box headline="Expired Members">
-      ${C(
+			${C(
       this.expiredMembers,
       (t) => t.memberKey,
       (t) => h`<uui-ref-node-member
-            name="${t.firstName} ${t.lastName}"
-            @open=${() => u(this, l, E).call(this, t)}
-          ></uui-ref-node-member>`
+						name="${t.firstName} ${t.lastName}"
+						@open=${() => u(this, l, E).call(this, t)}></uui-ref-node-member>`
     )}</uui-box
-    >`;
+		>`;
 };
 f.styles = B`
-    :host {
-      display: grid;
-      margin: var(--uui-size-layout-1);
-      gap: var(--uui-size-layout-1);
-      grid-template-columns: 1fr 1fr;
-    }
-  `;
+		:host {
+			display: grid;
+			margin: var(--uui-size-layout-1);
+			gap: var(--uui-size-layout-1);
+			grid-template-columns: 1fr 1fr;
+		}
+	`;
 g([
   S()
 ], f.prototype, "activeMembers", 2);
