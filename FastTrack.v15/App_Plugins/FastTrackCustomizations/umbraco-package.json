@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "extensions": [
         {
-            "type": "section",
+            "type": "backofficeEntryPoint",
             "alias": "Custom.EntryPoint.SubscriptionsApi",
             "name": "Fast Track - Entry Point - API Setup",
             "js": "/App_Plugins/FastTrackCustomizations/api-setup.js"
