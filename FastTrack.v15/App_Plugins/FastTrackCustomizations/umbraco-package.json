@@ -12,10 +12,10 @@
         {
             "type": "propertyEditorUi",
             "alias": "Custom.DatePickerWithStatus",
-            "name": "Fast Track - Property Editor - Member Expire",
+            "name": "Fast Track - Property Editor - Date Picker With Status",
             "element": "/App_Plugins/FastTrackCustomizations/property-editor-ui.js",
             "meta": {
-                "label": "Member expiration date",
+                "label": "Date Picker with Status",
                 "propertyEditorSchemaAlias": "Umbraco.DateTime",
                 "icon": "icon-time",
                 "group": "pickers",

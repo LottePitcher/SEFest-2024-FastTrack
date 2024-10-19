@@ -14,7 +14,7 @@ import type { UmbPropertyEditorUiElement } from "@umbraco-cms/backoffice/propert
 import type { UmbPropertyEditorConfigCollection } from "@umbraco-cms/backoffice/property-editor";
 import type { UUIInputEvent } from "@umbraco-cms/backoffice/external/uui";
 
-@customElement("fast-track-member-expire")
+@customElement("fast-track-date-picker")
 export class FastTrackPropertyEditor
   extends UmbElementMixin(LitElement)
   implements UmbPropertyEditorUiElement
@@ -53,7 +53,6 @@ export class FastTrackPropertyEditor
 
   #onChange(event: UUIInputEvent) {
     this.value = event.target.value as string;
-    console.log(this.value);
     this.dispatchEvent(new UmbChangeEvent());
   }
 
