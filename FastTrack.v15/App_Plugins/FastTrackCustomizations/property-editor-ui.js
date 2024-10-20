@@ -1,60 +1,63 @@
-import { UmbElementMixin as y } from "@umbraco-cms/backoffice/element-api";
-import { UmbChangeEvent as c } from "@umbraco-cms/backoffice/event";
-import { LitElement as b, html as p, css as w, property as v, state as D, customElement as E, repeat as L } from "@umbraco-cms/backoffice/external/lit";
-var A = Object.defineProperty, C = Object.getOwnPropertyDescriptor, d = (t) => {
+import { UmbElementMixin as m } from "@umbraco-cms/backoffice/element-api";
+import { UmbChangeEvent as p } from "@umbraco-cms/backoffice/event";
+import { LitElement as b, html as c, css as w, property as v, state as D, customElement as E, repeat as A } from "@umbraco-cms/backoffice/external/lit";
+var L = Object.defineProperty, $ = Object.getOwnPropertyDescriptor, d = (t) => {
   throw TypeError(t);
 }, l = (t, e, a, s) => {
-  for (var i = s > 1 ? void 0 : s ? C(e, a) : e, u = t.length - 1, h; u >= 0; u--)
-    (h = t[u]) && (i = (s ? h(e, a, i) : h(i)) || i);
-  return s && i && A(e, a, i), i;
-}, M = (t, e, a) => e.has(t) || d("Cannot " + a), O = (t, e, a) => e.has(t) ? d("Cannot add the same private member more than once") : e instanceof WeakSet ? e.add(t) : e.set(t, a), o = (t, e, a) => (M(t, e, "access private method"), a), n, f, _, g, m;
-let r = class extends y(b) {
+  for (var i = s > 1 ? void 0 : s ? $(e, a) : e, o = t.length - 1, h; o >= 0; o--)
+    (h = t[o]) && (i = (s ? h(e, a, i) : h(i)) || i);
+  return s && i && L(e, a, i), i;
+}, M = (t, e, a) => e.has(t) || d("Cannot " + a), S = (t, e, a) => e.has(t) ? d("Cannot add the same private member more than once") : e instanceof WeakSet ? e.add(t) : e.set(t, a), u = (t, e, a) => (M(t, e, "access private method"), a), n, f, _, g, y;
+let r = class extends m(b) {
   constructor() {
-    super(...arguments), O(this, n);
+    super(...arguments), S(this, n);
   }
   updated(t) {
-    (t.has("value") || t.has("config")) && o(this, n, f).call(this);
+    super.updated(t), (t.has("value") || t.has("config")) && u(this, n, f).call(this);
   }
   render() {
-    return p`
-			<div>
-				<uui-input type="date" .value=${(this.value ?? "").split(" ")[0]} @change=${o(this, n, _)}></uui-input>
+    return c` <div>
+				<uui-input type="date" value=${(this.value ?? "").split(" ")[0]} @change=${u(this, n, _)}></uui-input>
 
-				<span class="date-picker-status">${this._statusLabel}</span>
+				<span>${this._statusLabel}</span>
 			</div>
-			<div>${o(this, n, m).call(this)}</div>
-		`;
+			<div>${u(this, n, y).call(this)}</div>`;
   }
 };
 n = /* @__PURE__ */ new WeakSet();
 f = function() {
-  var t, e, a;
-  this.config && (this.value ? new Date(this.value) > /* @__PURE__ */ new Date() ? this._statusLabel = (t = this.config) == null ? void 0 : t.getValueByAlias("activeLabel") : this._statusLabel = (e = this.config) == null ? void 0 : e.getValueByAlias("expiredLabel") : this._statusLabel = (a = this.config) == null ? void 0 : a.getValueByAlias("emptyLabel"));
+  this.config && (this.value ? new Date(this.value) > /* @__PURE__ */ new Date() ? this._statusLabel = this.config.getValueByAlias("activeLabel") : this._statusLabel = this.config.getValueByAlias("expiredLabel") : this._statusLabel = this.config.getValueByAlias("emptyLabel"));
 };
 _ = function(t) {
-  this.value = t.target.value, this.dispatchEvent(new c());
+  const e = t.target.value.toString() + " 00:00:00";
+  isNaN(new Date(e).getTime()) || (this.value = e, this.dispatchEvent(new p()));
 };
 g = function(t) {
   const e = parseInt(t);
   if (!this.value || !e) return;
   const a = new Date(this.value);
-  a.setMonth(a.getMonth() + e), this.value = a.toLocaleDateString(), this.dispatchEvent(new c());
+  a.setMonth(a.getMonth() + e);
+  const s = a.getFullYear(), i = (a.getMonth() + 1).toString().padStart(2, "0"), o = a.getDate().toString().padStart(2, "0");
+  this.value = `${s}-${i}-${o} 00:00:00`, this.dispatchEvent(new p());
 };
-m = function() {
+y = function() {
   var e, a;
   const t = (a = (e = this.config) == null ? void 0 : e.getValueByAlias("addMonthsButtons")) == null ? void 0 : a.split(",");
   if (t)
-    return L(
+    return A(
       t,
-      (s) => p`
-					<uui-button look="secondary" @click=${() => o(this, n, g).call(this, s)}> Add ${s} months </uui-button>
+      (s) => c`
+					<uui-button
+						look="secondary"
+						label="Add ${s} months"
+						@click=${() => u(this, n, g).call(this, s)}></uui-button>
 				`
     );
 };
 r.styles = w`
 		:host {
 			display: grid;
-			row-gap: 10px;
+			row-gap: var(--uui-size-layout-1);
 		}
 	`;
 l([
@@ -67,9 +70,8 @@ l([
   D()
 ], r.prototype, "_statusLabel", 2);
 r = l([
-  E("fast-track-date-picker")
+  E("fast-track-subscription-expire")
 ], r);
 export {
-  r as FastTrackPropertyEditor,
   r as element
 };
