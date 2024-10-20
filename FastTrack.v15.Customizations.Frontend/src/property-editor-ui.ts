@@ -16,6 +16,7 @@ import type { UUIInputEvent } from '@umbraco-cms/backoffice/external/uui';
 
 @customElement('fast-track-date-picker')
 export class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements UmbPropertyEditorUiElement {
+	//
 	@property({ attribute: false })
 	config?: UmbPropertyEditorConfigCollection;
 
