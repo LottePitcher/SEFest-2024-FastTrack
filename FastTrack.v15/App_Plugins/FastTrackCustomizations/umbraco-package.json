@@ -72,12 +72,6 @@
                     "match": "Custom.Section.Subscriptions"
                 }
             ]
-        },
-        {
-            "type": "modal",
-            "alias": "Custom.Modal.Member",
-            "name": "Fast Track - Modal - Member",
-            "element": "/App_Plugins/FastTrackCustomizations/member-modal.js"
         }
     ]
 }
