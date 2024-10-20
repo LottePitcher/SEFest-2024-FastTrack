@@ -57,6 +57,7 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 		const valueAsDate = new Date(this.value);
 		valueAsDate.setMonth(valueAsDate.getMonth() + monthsAsInt);
 
+		// Date formatting to comply with server format:
 		const year = valueAsDate.getFullYear();
 		const month = (valueAsDate.getMonth() + 1).toString().padStart(2, '0');
 		const day = valueAsDate.getDate().toString().padStart(2, '0');
