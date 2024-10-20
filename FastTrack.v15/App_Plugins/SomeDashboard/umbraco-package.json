@@ -1,0 +1,22 @@
+{
+    "$schema": "../../umbraco-package-schema.json",
+    "name": "Some JS Dashboard",
+    "extensions": [
+        {
+            "type": "dashboard",
+            "alias": "Some.Dashboard.JS",
+            "name": "Some - Dashboard — JS",
+            "element": "/App_Plugins/SomeDashboard/dashboard.js",
+            "meta": {
+                "label": "Some Dashboard",
+                "pathname": "some-dashboard"
+            },
+            "conditions": [
+                {
+                    "alias": "Umb.Condition.SectionAlias",
+                    "match": "Umb.Section.Content"
+                }
+            ]
+        }
+    ]
+}

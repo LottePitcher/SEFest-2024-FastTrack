@@ -1,7 +1,6 @@
 {
     "$schema": "../../umbraco-package-schema.json",
     "name": "Fast Track Customizations",
-    "version": "1.0.0",
     "extensions": [
         {
             "type": "backofficeEntryPoint",
