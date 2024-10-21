@@ -3,12 +3,6 @@
     "name": "Fast Track Customizations",
     "extensions": [
         {
-            "type": "backofficeEntryPoint",
-            "alias": "Custom.EntryPoint.SubscriptionsApi",
-            "name": "Fast Track - Entry Point - API Setup",
-            "js": "/App_Plugins/FastTrackCustomizations/api-setup.js"
-        },
-        {
             "type": "propertyEditorUi",
             "alias": "Custom.DatePickerWithStatus",
             "name": "Fast Track - Property Editor - Date Picker With Status",
@@ -72,6 +66,12 @@
                     "match": "Custom.Section.Subscriptions"
                 }
             ]
+        },
+        {
+            "type": "backofficeEntryPoint",
+            "alias": "Custom.EntryPoint.SubscriptionsApi",
+            "name": "Fast Track - Entry Point - API Setup",
+            "js": "/App_Plugins/FastTrackCustomizations/api-setup.js"
         }
     ]
 }
