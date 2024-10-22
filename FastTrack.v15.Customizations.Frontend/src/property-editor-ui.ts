@@ -36,14 +36,14 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 			const valueDate = new Date(this.value);
 			if (valueDate > new Date()) {
 				this._statusClass = 'active';
-				this._statusLabel = this.config.getValueByAlias('activeLabel');
+				this._statusLabel = this.localize.string(this.config.getValueByAlias('activeLabel') ?? '');
 			} else {
 				this._statusClass = 'expired';
-				this._statusLabel = this.config.getValueByAlias('expiredLabel');
+				this._statusLabel = this.localize.string(this.config.getValueByAlias('expiredLabel') ?? '');
 			}
 		} else {
 			this._statusClass = '';
-			this._statusLabel = this.config.getValueByAlias('emptyLabel');
+			this._statusLabel = this.localize.string(this.config.getValueByAlias('emptyLabel') ?? '');
 		}
 	}
 
