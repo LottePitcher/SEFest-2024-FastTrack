@@ -6,7 +6,7 @@ using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Routing;
 using Umbraco.Cms.Web.Common.Authorization;
 
-namespace FastTrack.v15.SubscriptionsApi.Controllers;
+namespace FastTrack.v15.Customizations.Backend.SubscriptionsApi.Controllers;
 
 [ApiController]
 [Authorize(Policy = AuthorizationPolicies.BackOfficeAccess)]
@@ -22,9 +22,7 @@ public class ListingApiController : ControllerBase
     {
         _memberService = memberService;
     }
-
-    [HttpGet("GetActive")]
-    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
+    
     public List<SubscriptionListItem> GetActive()
     {
         return GetAllMembers()
@@ -34,9 +32,7 @@ public class ListingApiController : ControllerBase
             .ThenBy(x => x.FirstName)
             .ToList();
     }
-
-    [HttpGet("GetExpired")]
-    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
+    
     public List<SubscriptionListItem> GetExpired()
     {
         return GetAllMembers()
@@ -46,9 +42,7 @@ public class ListingApiController : ControllerBase
             .ThenBy(x => x.FirstName)
             .ToList();
     }
-
-    [HttpGet("GetNonsubscribed")]
-    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
+    
     public List<SubscriptionListItem> GetNonsubscribed()
     {
         return GetAllMembers()
@@ -57,23 +51,23 @@ public class ListingApiController : ControllerBase
             .ThenBy(x => x.FirstName)
             .ToList();
     }
-
+    
     private List<SubscriptionListItem> GetAllMembers()
     {
         // NB for a performant real-world solution, should put custom properties in Examine index and filter using Examine 
-
+        
         var allMembers = _memberService.GetAll(0, int.MaxValue, out var totalRecords);
-
+        
         var subscriptions = allMembers.Select(x => new SubscriptionListItem
-        {
-            MemberKey = x.Key,
-            FirstName = x.GetValue<string>("firstName"),
-            LastName = x.GetValue<string>("lastName"),
-            Email = x.Email,
-            SubscriptionExpiry = x.GetValue<DateTime?>("subscriptionExpiry")
-        })
+            {
+                MemberKey = x.Key,
+                FirstName = x.GetValue<string>("firstName"),
+                LastName = x.GetValue<string>("lastName"),
+                Email = x.Email,
+                SubscriptionExpiry = x.GetValue<DateTime?>("subscriptionExpiry")
+            })
             .ToList();
-
+        
         return subscriptions;
     }
 }
