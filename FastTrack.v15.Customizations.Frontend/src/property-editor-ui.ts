@@ -19,6 +19,9 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 	@state()
 	private _statusLabel?: string;
 
+	@state()
+	private _statusClass?: string;
+
 	protected updated(changedProperties: Map<string, unknown>) {
 		super.updated(changedProperties);
 		if (changedProperties.has('value') || changedProperties.has('config')) {
@@ -32,11 +35,14 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 		if (this.value) {
 			const valueDate = new Date(this.value);
 			if (valueDate > new Date()) {
+				this._statusClass = 'active';
 				this._statusLabel = this.config.getValueByAlias('activeLabel');
 			} else {
+				this._statusClass = 'expired';
 				this._statusLabel = this.config.getValueByAlias('expiredLabel');
 			}
 		} else {
+			this._statusClass = '';
 			this._statusLabel = this.config.getValueByAlias('emptyLabel');
 		}
 	}
@@ -70,7 +76,7 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 		return html` <div>
 				<uui-input type="date" value=${(this.value ?? '').split(' ')[0]} @change=${this.#onChange}></uui-input>
 
-				<span>${this._statusLabel}</span>
+				<span class="statusLabel ${this._statusClass ?? ''}">${this._statusLabel}</span>
 			</div>
 			<div>${this.#renderAddMonthOptions()}</div>`;
 	}
@@ -94,6 +100,20 @@ class FastTrackPropertyEditor extends UmbElementMixin(LitElement) implements Umb
 		:host {
 			display: grid;
 			row-gap: var(--uui-size-layout-1);
+		}
+
+		.statusLabel {
+			padding: var(--uui-size-2);
+		}
+
+		.active {
+			background-color: var(--uui-color-positive);
+			color: var(--uui-color-positive-contrast);
+		}
+
+		.expired {
+			background-color: var(--uui-color-warning);
+			color: var(--uui-color-warning-contrast);
 		}
 	`;
 }
