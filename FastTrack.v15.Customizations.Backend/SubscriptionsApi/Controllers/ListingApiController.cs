@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using FastTrack.v15.SubscriptionsApi.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Routing;
@@ -23,6 +24,8 @@ public class ListingApiController : ControllerBase
         _memberService = memberService;
     }
     
+    [HttpGet("GetActive")]
+    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
     public List<SubscriptionListItem> GetActive()
     {
         return GetAllMembers()
@@ -33,6 +36,8 @@ public class ListingApiController : ControllerBase
             .ToList();
     }
     
+    [HttpGet("GetExpired")]
+    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
     public List<SubscriptionListItem> GetExpired()
     {
         return GetAllMembers()
@@ -43,6 +48,8 @@ public class ListingApiController : ControllerBase
             .ToList();
     }
     
+    [HttpGet("GetNonsubscribed")]
+    [ProducesResponseType(typeof(List<SubscriptionListItem>), StatusCodes.Status200OK)]
     public List<SubscriptionListItem> GetNonsubscribed()
     {
         return GetAllMembers()
