@@ -10,14 +10,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "lit": "^3.1.4"
-  },
   "devDependencies": {
-		"typescript": "^5.5.3",
-		"vite": "^5.4.6",
-    "@hey-api/openapi-ts": "^0.52.11",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.6",
     "@umbraco-cms/backoffice": "^15.0.0-rc2",
+
+    "@hey-api/openapi-ts": "^0.52.11",
     "cross-env": "^7.0.3"
   }
 }
